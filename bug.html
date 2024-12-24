@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is initially visible.
+  </div>
+  <button onclick="myFunction()">Click Me</button>
+
+  <script>
+    function myFunction() {
+      document.getElementById("myDiv").innerHTML = ""; //Empty the div
+      document.getElementById("myDiv").style.display = "none"; //Hide the div
+      // The bug is that the following line of code will throw an error because
+      // we are trying to appendChild to a removed node.
+      document.body.appendChild(document.getElementById("myDiv")); 
+    }
+  </script>
+</body>
+</html>
